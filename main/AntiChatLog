@@ -1,0 +1,21 @@
+
+local CLFunc = clonefunc
+local caller = CLFunc(caller)
+local Hookfunc = CLFunc(hookfunc)
+local cd = 4
+local lp = game.Players.LocalPlayer
+wait(cd)
+local POST = require(lp:WaitForChild("PlayerScripts"):WaitForChild("ChatMain")).MessagePosted
+getfenv().MessageEv = Instance.new("BindableEvent")
+local oldhook
+local PMH = function(self,msg)
+	if not caller() and self == POST then
+		getfenv().MessageEv:Fire(msg)
+		return
+	end
+	return oldhook(self,msg)
+end
+oldhook = Hookfunc(POST.fire,PMH)
+--[[
+loadstring(game:HttpGet("",true))()
+--]]

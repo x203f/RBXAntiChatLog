@@ -17,5 +17,5 @@ local PMH = function(self,msg)
 end
 oldhook = Hookfunc(POST.fire,PMH)
 --[[
-loadstring(game:HttpGet("",true))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/x203f/RBXAntiChatLog/main/main/AntiChatLog",true))()
 --]]
